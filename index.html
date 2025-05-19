@@ -6,9 +6,36 @@
     <title>Facebook Boost Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Add Heroicons CDN for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/heroicons/1.0.6/solid.min.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
+        }
+        .nav-icon {
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.25rem;
+            vertical-align: text-bottom;
+            margin-right: 0.25rem;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .animated-bg {
+            background: linear-gradient(270deg, #6366f1, #8b5cf6, #ec4899, #6366f1, #3b82f6);
+            background-size: 300% 300%;
+            animation: gradient 10s ease infinite;
         }
     </style>
 </head>
@@ -17,14 +44,42 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
                 <img src="https://i.ibb.co/pB4Bt9JB/Gemini-Generated-Image-geja1dgeja1dgeja.png" alt="Company Logo" class="h-12 md:h-16 mr-4 md:mr-6">
-                <h1 class="text-2xl md:text-3xl font-bold">WillOne Freelancing</h1>
+                <h1 class="text-2xl md:text-3xl font-bold">Will One Freelancing</h1>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-6">
-                    <li><a href="#" class="hover:text-gray-200 transition duration-300 text-lg">Home</a></li>
-                    <li><a href="#services" class="hover:text-gray-200 transition duration-300 text-lg">Service</a></li>
-                    <li><a href="#reviews" class="hover:text-gray-200 transition duration-300 text-lg">Reviews</a></li>
-                    <li><a href="#contact" class="hover:text-gray-200 transition duration-duration-300 text-lg">Contact</a></li>
+                    <li>
+                        <a href="#" class="hover:text-gray-200 transition duration-300 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#services" class="hover:text-gray-200 transition duration-300 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Service
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reviews" class="hover:text-gray-200 transition duration-300 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                            </svg>
+                            Reviews
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="hover:text-gray-200 transition duration-300 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Contact
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <div class="flex items-center justify-end flex-grow md:flex-grow-0">
@@ -35,10 +90,30 @@
                         </svg>
                     </button>
                     <div id="mobile-menu" class="hidden absolute top-20 right-0 bg-gray-800 shadow-lg rounded-md py-2 px-4 space-y-2">
-                        <a href="#" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg">Home</a>
-                        <a href="#services" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg">Service</a>
-                        <a href="#reviews" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg">Review</a>
-                        <a href="#contact" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg">Contact</a>
+                        <a href="#" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                            Home
+                        </a>
+                        <a href="#services" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Service
+                        </a>
+                        <a href="#reviews" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                            </svg>
+                            Review
+                        </a>
+                        <a href="#contact" class="block text-white hover:bg-gray-700 rounded-md px-2 py-1 text-lg flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Contact
+                        </a>
                     </div>
                 </div>
             </div>
@@ -46,14 +121,15 @@
     </header>
 
     <main>
-        <section id="hero" class="py-20 md:py-28 bg-gradient-to-br from-purple-600 to-pink-500 text-white text-center">
+        <section id="hero" class="py-20 md:py-28 text-white text-center animated-bg">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Grow your Facebook presence</h2>
                 <p class="text-xl md:text-2xl mb-10">Increase your reach, engagement, and impact with our powerful Facebook marketing solutions.</p>
                 <a href="#services" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-semibold py-3 px-8 rounded-full transition duration-300 text-center text-xl">Order Now</a>
             </div>
         </section>
-
+    </main>
+        
         <section id="services" class="py-12 md:py-16">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl font-semibold mb-8">Our services</h2>
@@ -131,12 +207,8 @@ We offer a variety of packages to suit different needs and budgets. Our team of 
                 <h2 class="text-3xl font-semibold mb-8">Follow Us</h2>
                 <div class="flex justify-center space-x-8">
                     <!-- Facebook -->
-                    <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition duration-300" aria-label="Facebook">
+                    <a href="https://www.facebook.com/profile.php?id=100083818621419" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition duration-300" aria-label="Facebook">
                         <img src="https://i.ibb.co/tT03W148/facebook.png" alt="Facebook" class="w-10 h-10" />
-                    </a>
-                    <!-- Instagram -->
-                    <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" class="text-pink-500 hover:text-pink-700 transition duration-300" aria-label="Instagram">
-                        <img src="https://i.ibb.co/v4XDWYB0/insatagram.jpg" alt="Instagram" class="w-10 h-10" />
                     </a>
                     <!-- WhatsApp -->
                     <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" class="text-green-500 hover:text-green-700 transition duration-300" aria-label="WhatsApp">
@@ -211,30 +283,34 @@ We offer a variety of packages to suit different needs and budgets. Our team of 
             const orderForm = document.createElement('form');
             orderForm.innerHTML = `
                 <div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(255, 255, 255, 0.9); padding: 10px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); z-index: 10; width: 90%; max-width: 400px;">
-                    <h2 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: #1a202c;">অর্ডার ফর্ম - ${service}</h2>
+                    <h2 style="font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: #1a202c;">Order Form - ${service}</h2>
                     <div style="margin-bottom: 0.75rem;">
-                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">নাম:</label>
+                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">Full Name:</label>
                         <input type="text" name="name" style="width: 100%; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; font-size: 0.875rem; color: #2d3748; outline: none; transition: border-color 0.15s ease-in-out;" required>
                     </div>
                     <div style="margin-bottom: 0.75rem;">
-                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">Facebook পেজ লিঙ্ক:</label>
+                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">Facebook Page Link:</label>
                         <input type="text" name="pageLink" style="width: 100%; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; font-size: 0.875rem; color: #2d3748; outline: none; transition: border-color 0.15s ease-in-out;" required>
                     </div>
                     <div style="margin-bottom: 0.75rem;">
-                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">পরিমাণ:</label>
+                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">Quantity:</label>
                         <select name="quantity" style="width: 100%; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; font-size: 0.875rem; color: #2d3748; outline: none; transition: border-color 0.15s ease-in-out;" required>
                             <option value="1000">1000 Likes / Followers</option>
                         </select>
                     </div>
                     <div style="margin-bottom: 0.75rem;">
-                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">পেমেন্ট পদ্ধতি:</label>
+                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">Payment Method:</label>
                         <select name="paymentMethod" style="width: 100%; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; font-size: 0.875rem; color: #2d3748; outline: none; transition: border-color 0.15s ease-in-out;" required>
                             <option value="bkash">bKash (01799-452871)</option>
                             <option value="nagad">Nagad (01766-271192)</option>
                         </select>
                     </div>
                     <div style="margin-bottom: 0.75rem;">
-                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">লেনদেন আইডি:</label>
+                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">Your Payment Number:</label>
+                        <input type="text" name="transactionId" style="width: 100%; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; font-size: 0.875rem; color: #2d3748; outline: none; transition: border-color 0.15s ease-in-out;" required>
+                    </div>
+                    <div style="margin-bottom: 0.75rem;">
+                        <label style="display: block; font-size: 0.75rem; color: #4a5568; margin-bottom: 0.25rem;">Transaction ID:</label>
                         <input type="text" name="transactionId" style="width: 100%; padding: 0.5rem; border-radius: 0.375rem; border: 1px solid #e2e8f0; font-size: 0.875rem; color: #2d3748; outline: none; transition: border-color 0.15s ease-in-out;" required>
                     </div>
                     <button type="submit" style="background-color: #3182ce; color: #fff; font-size: 0.875rem; font-weight: 600; border: none; border-radius: 0.375rem; padding: 0.5rem 1rem; cursor: pointer; transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out; width: 100%;">অর্ডার নিশ্চিত করুন</button>
@@ -249,6 +325,7 @@ We offer a variety of packages to suit different needs and budgets. Our team of 
                 const pageLink = orderForm.pageLink.value;
                 const quantity = orderForm.quantity.value;
                 const paymentMethod = orderForm.paymentMethod.value;
+                const yourpaymentnumber = orderForm.yourpaymentnumber.value;
                 const transactionId = orderForm.transactionId.value;
 
                 // Store the order details
@@ -258,7 +335,9 @@ We offer a variety of packages to suit different needs and budgets. Our team of 
                     pageLink: pageLink,
                     quantity: quantity,
                     paymentMethod: paymentMethod,
+                    yourpaymentnumber: yourpaymentnumber,
                     transactionId: transactionId
+                    
                 };
                 orders.push(order); // Add the order to the orders array
                 displayOrders(); // Updatethe displayed order list
@@ -316,6 +395,7 @@ We offer a variety of packages to suit different needs and budgets. Our team of 
                     <p><span class="font-semibold text-lg">Facebook Page Link:</span> ${order.pageLink}</p>
                     <p><span class="font-semibold text-lg">Quantity:</span> ${order.quantity}</p>
                     <p><span class="font-semibold text-lg">Payment Method:</span> ${order.paymentMethod}</p>
+                    p><span class="font-semibold text-lg">Your Payment Number:</span> ${order.yourpaymentnumber}</p>
                     <p><span class="font-semibold text-lg">Transaction ID:</span> ${order.transactionId}</p>
                     <hr class="my-2">
                 `;
@@ -338,7 +418,9 @@ We offer a variety of packages to suit different needs and budgets. Our team of 
                 Facebook Page Link: ${order.pageLink}
                 Quantity: ${order.quantity}
                 Payment Method: ${order.paymentMethod}
+                Your Payment Number: ${order.yourpaymentnumber}
                 Transaction ID: ${order.transactionId}
+                
             `;
 
             // This is a placeholder for the actual email sending process.
