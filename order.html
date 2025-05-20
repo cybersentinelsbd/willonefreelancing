@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Form</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .animated-bg {
+      background: linear-gradient(270deg, #6366f1, #8b5cf6, #ec4899, #6366f1, #3b82f6);
+      background-size: 300% 300%;
+      animation: gradient 10s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .form-container {
+      background: #ffffffdd;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #6366f1;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #4f46e5;
+    }
+
+    .success-message {
+      margin-top: 20px;
+      color: green;
+      text-align: center;
+    }
+
+    .back-btn {
+      margin-top: 10px;
+      background-color: #f43f5e;
+    }
+
+    .back-btn:hover {
+      background-color: #e11d48;
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg">
+    <div class="form-container">
+      <h2>Place Your Order</h2>
+      <form id="orderForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email (optional)</label>
+        <input type="email" id="email">
+
+        <label for="pageLink">Page Link</label>
+        <input type="url" id="pageLink" required>
+
+        <label for="package">Package</label>
+        <select id="package" required>
+          <option value="">-- Select Package --</option>
+          <option value="1k BD Like + Follower (135৳)">1k BD Like + Follower (135৳)</option>
+          <option value="1k BD React (145৳)">1k BD React (145৳)</option>
+          <option value="250 React + 50 Comment (75৳)">250 React + 50 Comment (75৳)</option>
+          <option value="40 Comment (25৳)">40 Comment (25৳)</option>
+          <option value="40 Comment + 40 React (30৳)">40 Comment + 40 React (30৳)</option>
+          <option value="100 Comment (65৳)">100 Comment (65৳)</option>
+          <option value="100 Comment 100 React (80৳)">100 Comment 100 React (80৳)</option>
+          <option value="25 Review + 25 follow + 1 post 25 react (60৳)">25 Review + 25 follow + 1 post 25 react (60৳)</option>
+          <option value="50 Review + 50 Follow (100৳)">50 Review + 50 Follow (100৳)</option>
+          <option value="1K Likes / Followers (90৳)">1K Likes / Followers (90৳)</option>
+          <option value="25 Massenger Review + 1 Post 25 React (80৳)">25 Massenger Review + 1 Post 25 React (80৳)</option>  
+        </select>
+
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" required>
+          <option value="">-- Select Method --</option>
+          <option value="Bkash">Bkash 01799452871</option>
+          <option value="Nagad">Nagad </option>
+        </select>
+
+        <label for="paymentNumber">Your Payment Number</label>
+        <input type="text" id="paymentNumber" placeholder="Your payment number" required>
+
+        <label for="trxId">Transaction ID</label>
+        <input type="text" id="trxId" required>
+
+        <button type="submit">Confirm Order</button>
+        <button type="button" class="back-btn" onclick="window.location.href='index.html'">Back to Home</button>
+        <div class="success-message" id="successMsg"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDeUAQe2GSDRoimqXmXOQOwjmD1yjaWK3E",
+      authDomain: "order-form-c3ed5.firebaseapp.com",
+      projectId: "order-form-c3ed5",
+      storageBucket: "order-form-c3ed5.appspot.com",
+      messagingSenderId: "541107740563",
+      appId: "1:541107740563:web:91da2ce8a4a4371c3fd266"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    document.getElementById('orderForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const orderData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        pageLink: document.getElementById('pageLink').value,
+        package: document.getElementById('package').value,
+        paymentMethod: document.getElementById('paymentMethod').value,
+        paymentNumber: document.getElementById('paymentNumber').value,
+        trxId: document.getElementById('trxId').value,
+        timestamp: new Date()
+      };
+
+      db.collection("orders").add(orderData).then(() => {
+        document.getElementById('successMsg').innerText = "✅ Order submitted successfully!";
+        document.getElementById('orderForm').reset();
+      }).catch((error) => {
+        alert("Error: " + error.message);
+      });
+    });
+  </script>
+</body>
+</html>
